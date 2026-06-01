@@ -3,6 +3,7 @@ import { Trophy, Star, CheckCircle2, BookOpen, Code, BrainCircuit, TrendingUp, A
 import { useStore } from '../store/useStore';
 import { badges } from '../data/badges';
 import { courses } from '../data/courses';
+import { assessments } from '../data/assessments';
 
 const Achievements = () => {
   const { userProgress, userBadges, totalPoints, completedLessons, completedExercises, assessmentResults } = useStore();
