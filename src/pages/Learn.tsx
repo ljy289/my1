@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { courses } from '../data/courses';
 import { useStore } from '../store/useStore';
 import { badges } from '../data/badges';
+import CodeRunner from '../components/CodeRunner';
 
 const Learn = () => {
   const { courseId } = useParams();
@@ -118,18 +119,14 @@ const Learn = () => {
                 代码示例
               </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {currentLesson.examples.map((example, index) => (
-                  <div key={example.id} className="bg-slate-900/50 rounded-xl overflow-hidden">
-                    <div className="bg-slate-900 px-4 py-2 border-b border-slate-700">
-                      <span className="text-sm text-slate-400">示例 {index + 1}</span>
+                  <div key={example.id}>
+                    <div className="mb-2 flex items-center justify-between">
+                      <span className="text-sm font-medium text-slate-300">示例 {index + 1}</span>
+                      <span className="text-xs text-slate-500">{example.explanation}</span>
                     </div>
-                    <pre className="p-4 overflow-x-auto">
-                      <code className="text-sm text-slate-300">{example.code}</code>
-                    </pre>
-                    <div className="px-4 py-3 bg-slate-900/30 border-t border-slate-700">
-                      <p className="text-sm text-slate-400">{example.explanation}</p>
-                    </div>
+                    <CodeRunner initialCode={example.code} />
                   </div>
                 ))}
               </div>
