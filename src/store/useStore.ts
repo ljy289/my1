@@ -17,6 +17,36 @@ interface UserBadges {
   };
 }
 
+interface Example {
+  id: string;
+  code: string;
+  explanation: string;
+}
+
+interface Exercise {
+  id: string;
+  question: string;
+  type: 'multiple-choice' | 'coding' | 'short-answer';
+  options?: string[];
+  answer: string;
+  explanation: string;
+}
+
+interface CourseContent {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  order: number;
+  lessons: {
+    id: string;
+    title: string;
+    content: string;
+    examples: Example[];
+    exercises: Exercise[];
+  }[];
+}
+
 interface AssessmentResult {
   assessmentId: string;
   score: number;
@@ -31,12 +61,15 @@ interface Store {
   completedLessons: number;
   completedExercises: number;
   completedCourses: number;
+  customCourseContent: Record<string, CourseContent>;
   completeLesson: (courseId: string, lessonId: string) => void;
   completeExercise: (exerciseId: string) => void;
   completeAssessment: (assessmentId: string, score: number) => void;
   unlockBadge: (badgeId: string) => void;
   checkBadges: () => string[];
   resetProgress: () => void;
+  setCourseContent: (courseId: string, content: CourseContent) => void;
+  getCourseContent: (courseId: string) => CourseContent | null;
 }
 
 export const useStore = create<Store>()(
@@ -49,6 +82,7 @@ export const useStore = create<Store>()(
       completedLessons: 0,
       completedExercises: 0,
       completedCourses: 0,
+      customCourseContent: {},
       
       completeLesson: (courseId: string, lessonId: string) => {
         set((state) => {
@@ -149,8 +183,23 @@ export const useStore = create<Store>()(
           assessmentResults: [],
           completedLessons: 0,
           completedExercises: 0,
-          completedCourses: 0
+          completedCourses: 0,
+          customCourseContent: {}
         });
+      },
+      
+      setCourseContent: (courseId: string, content: CourseContent) => {
+        set((state) => ({
+          customCourseContent: {
+            ...state.customCourseContent,
+            [courseId]: content
+          }
+        }));
+      },
+      
+      getCourseContent: (courseId: string) => {
+        const state = get();
+        return state.customCourseContent[courseId] || null;
       }
     }),
     {

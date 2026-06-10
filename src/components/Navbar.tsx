@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Trophy, BrainCircuit } from 'lucide-react';
+import { Home, BookOpen, Trophy, BrainCircuit, Settings } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { motion } from 'framer-motion';
 
@@ -11,7 +11,8 @@ const Navbar = () => {
     { path: '/', icon: Home, label: '首页' },
     { path: '/courses', icon: BookOpen, label: '课程' },
     { path: '/assessment', icon: BrainCircuit, label: '测评' },
-    { path: '/achievements', icon: Trophy, label: '成就' }
+    { path: '/achievements', icon: Trophy, label: '成就' },
+    { path: '/admin', icon: Settings, label: '管理' }
   ];
   
   return (

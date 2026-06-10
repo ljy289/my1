@@ -5,6 +5,7 @@ import Courses from "@/pages/Courses";
 import Learn from "@/pages/Learn";
 import Assessment from "@/pages/Assessment";
 import Achievements from "@/pages/Achievements";
+import Admin from "@/pages/Admin";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/courses/:courseId/learn" element={<Learn />} />
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/achievements" element={<Achievements />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
     </Router>

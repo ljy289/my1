@@ -18,9 +18,10 @@ const Learn = () => {
   const [newBadges, setNewBadges] = useState<string[]>([]);
   const [showBadgeModal, setShowBadgeModal] = useState(false);
   
-  const { completeLesson, completeExercise, userProgress, checkBadges, unlockBadge, userBadges } = useStore();
+  const { completeLesson, completeExercise, userProgress, checkBadges, unlockBadge, userBadges, getCourseContent } = useStore();
   
-  const course = courses.find(c => c.id === courseId);
+  const customCourse = getCourseContent(courseId || '');
+  const course = customCourse || courses.find(c => c.id === courseId);
   const lessonIdParam = searchParams.get('lesson');
   
   const currentLessonIndex = lessonIdParam 
