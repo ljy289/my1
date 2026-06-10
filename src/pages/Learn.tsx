@@ -108,8 +108,23 @@ const Learn = () => {
           animate={{ opacity: 1, y: 0 }}
           className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 mb-8"
         >
-          <div className="prose prose-invert max-w-none">
-            <ReactMarkdown>{currentLesson.content}</ReactMarkdown>
+          <div className="text-white">
+            <ReactMarkdown
+              components={{
+                h1: ({ children }) => <h1 className="text-3xl font-bold text-white mb-4 mt-0">{children}</h1>,
+                h2: ({ children }) => <h2 className="text-2xl font-bold text-white mb-3 mt-8">{children}</h2>,
+                h3: ({ children }) => <h3 className="text-xl font-semibold text-white mb-2 mt-6">{children}</h3>,
+                p: ({ children }) => <p className="text-white leading-relaxed mb-4">{children}</p>,
+                ul: ({ children }) => <ul className="text-white list-disc list-inside space-y-2 mb-4">{children}</ul>,
+                ol: ({ children }) => <ol className="text-white list-decimal list-inside space-y-2 mb-4">{children}</ol>,
+                li: ({ children }) => <li className="text-white leading-relaxed">{children}</li>,
+                strong: ({ children }) => <strong className="text-white font-bold">{children}</strong>,
+                code: ({ children }) => <code className="bg-slate-700 px-1.5 py-0.5 rounded text-yellow-200 font-mono text-sm">{children}</code>,
+                pre: ({ children }) => <pre className="bg-slate-900 p-4 rounded-lg border border-slate-700 overflow-x-auto text-green-200 mb-4">{children}</pre>,
+              }}
+            >
+              {currentLesson.content}
+            </ReactMarkdown>
           </div>
           
           {currentLesson.examples.length > 0 && (
