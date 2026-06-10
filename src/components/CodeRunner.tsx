@@ -66,12 +66,12 @@ const CodeRunner = ({ initialCode }: CodeRunnerProps) => {
           outputs.push(String(result));
         }
       } catch (error: any) {
-        outputs.push(`错误: ${error.message}`);
+        outputs.push(`代码错误: ${error.message}`);
       }
 
       setOutput(outputs.join('\n'));
     } catch (error: any) {
-      setOutput(`执行错误: ${error.message}`);
+      setOutput(`运行异常: ${error.message}`);
     } finally {
       setIsLoading(false);
     }

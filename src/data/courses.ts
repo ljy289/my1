@@ -33,30 +33,30 @@ export interface Course {
 export const courses: Course[] = [
   {
     id: 'project1',
-    title: 'Project 1: Association Rule Mining',
-    description: 'Discover item associations using Apriori algorithm and generate recommendations',
+    title: '项目1：电商购物车关联规则挖掘',
+    description: '使用Apriori算法发现商品之间的关联关系，生成"买了A的用户也买了B"的推荐',
     icon: 'shopping-cart',
     order: 1,
     lessons: [
       {
         id: 'association-intro',
-        title: 'Introduction to Association Rules',
-        content: 'Learn about support, confidence, and lift - the core metrics for association rules.',
+        title: '关联规则基础',
+        content: '学习关联规则的核心指标：支持度、置信度和提升度，以及Apriori算法的基本原理。',
         examples: [
           {
             id: 'ex1',
-            code: 'import pandas as pd\ntransactions = [[\"milk\", \"bread\", \"egg\"], [\"milk\", \"bread\"]]\ndf = pd.DataFrame({\"order_id\": range(1, len(transactions)+1), \"items\": transactions})\nprint(df)',
-            explanation: 'Create transaction data'
+            code: 'import pandas as pd\ntransactions = [[\"牛奶\", \"面包\", \"鸡蛋\"], [\"牛奶\", \"面包\"]]\ndf = pd.DataFrame({\"订单ID\": range(1, len(transactions)+1), \"商品\": transactions})\nprint(df)',
+            explanation: '创建交易数据'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What is support?',
+            question: '支持度的计算公式是？',
             type: 'multiple-choice',
-            options: ['Transactions with X / Total', 'Transactions with X and Y', 'Confidence / Support', 'Lift * Confidence'],
-            answer: 'Transactions with X / Total',
-            explanation: 'Support measures itemset frequency'
+            options: ['包含X的交易数/总交易数', '包含X和Y的交易数/包含X的交易数', '置信度/支持度', '提升度×置信度'],
+            answer: '包含X的交易数/总交易数',
+            explanation: '支持度衡量项集在数据集中出现的频率'
           }
         ]
       }
@@ -64,30 +64,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project2',
-    title: 'Project 2: RFM Analysis',
-    description: 'Analyze customer value using RFM model and KMeans clustering',
+    title: '项目2：用户消费行为RFM分析与价值聚类',
+    description: '通过RFM模型分析用户价值，使用KMeans聚类将用户分为不同群体',
     icon: 'users',
     order: 2,
     lessons: [
       {
         id: 'rfm-intro',
-        title: 'RFM Model Basics',
-        content: 'RFM stands for Recency, Frequency, and Monetary value.',
+        title: 'RFM模型基础',
+        content: 'RFM代表最近一次消费（Recency）、消费频率（Frequency）和消费金额（Monetary）三个维度。',
         examples: [
           {
             id: 'ex1',
-            code: 'import pandas as pd\nrfm = df.groupby(\"user_id\").agg({\n    \"order_date\": lambda x: (analysis_date - x.max()).days,\n    \"user_id\": \"count\",\n    \"amount\": \"sum\"\n})\nrfm.columns = [\"R\", \"F\", \"M\"]',
-            explanation: 'Calculate RFM values'
+            code: 'import pandas as pd\nrfm = df.groupby(\"用户ID\").agg({\n    \"订单日期\": lambda x: (分析日期 - x.max()).days,\n    \"用户ID\": \"count\",\n    \"金额\": \"sum\"\n})\nrfm.columns = [\"R\", \"F\", \"M\"]',
+            explanation: '计算RFM值'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What does R stand for?',
+            question: 'RFM中的R代表什么？',
             type: 'multiple-choice',
-            options: ['Recency', 'Revenue', 'Retention', 'Return'],
-            answer: 'Recency',
-            explanation: 'R is Recency - days since last purchase'
+            options: ['最近一次消费', '消费频率', '消费金额', '消费人数'],
+            answer: '最近一次消费',
+            explanation: 'R是Recency，即最近一次消费距今天数'
           }
         ]
       }
@@ -95,30 +95,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project3',
-    title: 'Project 3: Anomaly Detection',
-    description: 'Detect and handle anomalies in order data',
+    title: '项目3：异常订单检测',
+    description: '识别并处理订单数据中的异常值，包括空值、重复、离群值等',
     icon: 'alert-circle',
     order: 3,
     lessons: [
       {
         id: 'anomaly-intro',
-        title: 'Anomaly Detection Basics',
-        content: 'Learn to detect null values, duplicates, outliers, and logical errors.',
+        title: '异常检测基础',
+        content: '学习如何检测空值、重复数据、离群值和逻辑错误，以及使用Z-score和IQR方法。',
         examples: [
           {
             id: 'ex1',
-            code: 'import pandas as pd\nnull_check = df.isnull().sum()\nduplicate_check = df.duplicated(subset=\"order_id\").sum()',
-            explanation: 'Basic anomaly detection'
+            code: 'import pandas as pd\n空值检查 = df.isnull().sum()\n重复检查 = df.duplicated(subset=\"订单ID\").sum()',
+            explanation: '基础异常检测'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'How to detect null values?',
+            question: '如何检测DataFrame中的空值？',
             type: 'multiple-choice',
             options: ['df.isnull()', 'df.empty()', 'df.na()', 'df.null()'],
             answer: 'df.isnull()',
-            explanation: 'isnull() detects null values'
+            explanation: 'isnull()返回标记空值位置的布尔DataFrame'
           }
         ]
       }
@@ -126,30 +126,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project4',
-    title: 'Project 4: Funnel Analysis',
-    description: 'Analyze conversion funnel from browse to purchase',
+    title: '项目4：购物车转化路径分析',
+    description: '分析用户从浏览到下单的转化漏斗，识别流失环节',
     icon: 'trending-up',
     order: 4,
     lessons: [
       {
         id: 'funnel-intro',
-        title: 'Funnel Analysis Basics',
-        content: 'Analyze user conversion through different stages.',
+        title: '漏斗分析基础',
+        content: '分析用户在不同转化阶段的转化率，识别主要流失点。',
         examples: [
           {
             id: 'ex1',
-            code: 'funnel = df.groupby(\"action\").nunique()[\"user_id\"]\nconversion = funnel / funnel.shift(1) * 100',
-            explanation: 'Calculate funnel conversion rates'
+            code: '漏斗数据 = df.groupby(\"行为\").nunique()[\"用户ID\"]\n转化率 = 漏斗数据 / 漏斗数据.shift(1) * 100',
+            explanation: '计算漏斗转化率'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What is conversion rate?',
+            question: '转化率的计算公式是？',
             type: 'multiple-choice',
-            options: ['Current step / Previous step', 'Total users / Current step', 'Previous step / Current step', 'None'],
-            answer: 'Current step / Previous step',
-            explanation: 'Conversion rate = current / previous * 100%'
+            options: ['当前步骤/上一步骤', '总用户数/当前步骤', '上一步骤/当前步骤', '当前步骤/总用户数'],
+            answer: '当前步骤/上一步骤',
+            explanation: '转化率 = 当前步骤用户数 / 上一步骤用户数 × 100%'
           }
         ]
       }
@@ -157,30 +157,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project5',
-    title: 'Project 5: Time Series Analysis',
-    description: 'Analyze sales trends and predict future sales',
+    title: '项目5：商品销售趋势与周期性分析',
+    description: '分析销售趋势和季节性，使用时间序列方法预测未来销量',
     icon: 'line-chart',
     order: 5,
     lessons: [
       {
         id: 'timeseries-intro',
-        title: 'Time Series Basics',
-        content: 'Learn time series decomposition and forecasting.',
+        title: '时间序列分析基础',
+        content: '学习时间序列分解、同比/环比分析，以及滑动窗口统计。',
         examples: [
           {
             id: 'ex1',
-            code: 'weekly = df.resample(\"W\", on=\"date\").sum()\nrolling_mean = df[\"sales\"].rolling(7).mean()',
-            explanation: 'Time series aggregation'
+            code: '周汇总 = df.resample(\"W\", on=\"日期\").sum()\n滑动均值 = df[\"销售额\"].rolling(7).mean()',
+            explanation: '时间序列聚合'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What does resample("W") do?',
+            question: 'resample(\"W\")的作用是？',
             type: 'multiple-choice',
-            options: ['Resample weekly', 'Resample monthly', 'Resample daily', 'Resample yearly'],
-            answer: 'Resample weekly',
-            explanation: '"W" means weekly frequency'
+            options: ['按周重采样', '按月重采样', '按天重采样', '按年重采样'],
+            answer: '按周重采样',
+            explanation: 'W代表weekly，即按周聚合'
           }
         ]
       }
@@ -188,30 +188,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project6',
-    title: 'Project 6: Repurchase Analysis',
-    description: 'Analyze customer repurchase patterns and lifecycle',
+    title: '项目6：用户复购间隔与生命周期聚类',
+    description: '分析用户的复购模式，构建活跃度衰减模型',
     icon: 'clock',
     order: 6,
     lessons: [
       {
         id: 'repurchase-intro',
-        title: 'Repurchase Analysis',
-        content: 'Analyze repurchase intervals and customer lifecycle.',
+        title: '复购行为分析',
+        content: '分析用户复购间隔和生命周期，构建活跃度衰减模型。',
         examples: [
           {
             id: 'ex1',
-            code: 'orders[\"interval\"] = orders.groupby(\"user_id\")[\"date\"].diff().dt.days\navg_interval = orders.groupby(\"user_id\")[\"interval\"].mean()',
-            explanation: 'Calculate repurchase intervals'
+            code: 'orders[\"间隔\"] = orders.groupby(\"用户ID\")[\"日期\"].diff().dt.days\n平均间隔 = orders.groupby(\"用户ID\")[\"间隔\"].mean()',
+            explanation: '计算复购间隔'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What is repurchase interval?',
+            question: '复购间隔指的是什么？',
             type: 'multiple-choice',
-            options: ['Days between purchases', 'Days since first purchase', 'Days since last purchase', 'Total days as customer'],
-            answer: 'Days between purchases',
-            explanation: 'Time between consecutive purchases'
+            options: ['两次购买之间的天数', '距首次购买的天数', '距最近购买的天数', '成为客户的总天数'],
+            answer: '两次购买之间的天数',
+            explanation: '复购间隔是指连续两次购买之间的时间间隔'
           }
         ]
       }
@@ -219,30 +219,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project7',
-    title: 'Project 7: Sentiment Analysis',
-    description: 'Analyze review sentiment and rating inconsistencies',
+    title: '项目7：文本评论情感与评分不一致分析',
+    description: '分析评论的情感倾向，识别评分与情感不一致的样本',
     icon: 'message-circle',
     order: 7,
     lessons: [
       {
         id: 'sentiment-intro',
-        title: 'Sentiment Analysis Basics',
-        content: 'Analyze text sentiment and detect rating inconsistencies.',
+        title: '情感分析基础',
+        content: '使用SnowNLP等工具分析文本情感，识别高评价但负面内容或低评价但正面内容的矛盾样本。',
         examples: [
           {
             id: 'ex1',
-            code: 'from snownlp import SnowNLP\nscore = SnowNLP(text).sentiments',
-            explanation: 'Calculate sentiment score'
+            code: 'from snownlp import SnowNLP\n得分 = SnowNLP(文本).sentiments',
+            explanation: '计算情感得分'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What is sentiment analysis?',
+            question: '情感分析主要分析什么？',
             type: 'multiple-choice',
-            options: ['Analyze text emotion', 'Analyze text length', 'Analyze text structure', 'Analyze text grammar'],
-            answer: 'Analyze text emotion',
-            explanation: 'Sentiment analysis determines emotional tone'
+            options: ['文本的情感倾向', '文本长度', '文本结构', '文本语法'],
+            answer: '文本的情感倾向',
+            explanation: '情感分析判断文本表达的是正面还是负面情感'
           }
         ]
       }
@@ -250,30 +250,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project8',
-    title: 'Project 8: Collaborative Filtering',
-    description: 'Implement item-based collaborative filtering for recommendations',
+    title: '项目8：购物篮商品组合推荐',
+    description: '基于协同过滤算法，为购物车中的商品推荐补充商品',
     icon: 'shopping-bag',
     order: 8,
     lessons: [
       {
         id: 'collaborative-intro',
-        title: 'Collaborative Filtering',
-        content: 'Implement item-based collaborative filtering.',
+        title: '协同过滤推荐',
+        content: '基于物品的协同过滤，使用余弦相似度计算商品相似度并生成推荐。',
         examples: [
           {
             id: 'ex1',
-            code: 'from sklearn.metrics.pairwise import cosine_similarity\nitem_sim = cosine_similarity(matrix.T)',
-            explanation: 'Calculate item similarity'
+            code: 'from sklearn.metrics.pairwise import cosine_similarity\n商品相似度 = cosine_similarity(矩阵.T)',
+            explanation: '计算商品相似度'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What is cosine similarity range?',
+            question: '余弦相似度的取值范围是？',
             type: 'multiple-choice',
-            options: ['-1 to 1', '0 to 1', '0 to 100', '-100 to 100'],
-            answer: '-1 to 1',
-            explanation: 'Cosine similarity ranges from -1 to 1'
+            options: ['-1到1', '0到1', '0到100', '-100到100'],
+            answer: '-1到1',
+            explanation: '余弦相似度范围是-1到1，1表示完全相似'
           }
         ]
       }
@@ -281,30 +281,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project9',
-    title: 'Project 9: A/B Testing',
-    description: 'Analyze A/B test results with statistical tests',
+    title: '项目9：促销活动效果分析',
+    description: '通过A/B测试和统计检验分析促销活动的真实效果',
     icon: 'percent',
     order: 9,
     lessons: [
       {
         id: 'abtest-intro',
-        title: 'A/B Testing Basics',
-        content: 'Analyze experiment results using t-test and chi-square.',
+        title: 'A/B测试基础',
+        content: '使用t检验和卡方检验分析实验组和对照组的差异显著性。',
         examples: [
           {
             id: 'ex1',
-            code: 'from scipy import stats\nt_stat, p_value = stats.ttest_ind(treatment, control)',
-            explanation: 'Perform t-test'
+            code: 'from scipy import stats\nt统计量, p值 = stats.ttest_ind(实验组, 对照组)',
+            explanation: '执行t检验'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'What does p-value < 0.05 mean?',
+            question: 'p值<0.05通常意味着什么？',
             type: 'multiple-choice',
-            options: ['Significant difference', 'No difference', 'Uncertain', 'Error'],
-            answer: 'Significant difference',
-            explanation: 'Reject null hypothesis'
+            options: ['差异显著', '无差异', '不确定', '错误'],
+            answer: '差异显著',
+            explanation: 'p值小于0.05时拒绝原假设，认为两组有显著差异'
           }
         ]
       }
@@ -312,30 +312,30 @@ export const courses: Course[] = [
   },
   {
     id: 'project10',
-    title: 'Project 10: End-to-End Analysis',
-    description: 'Complete data cleaning and customer profiling report',
+    title: '项目10：端到端数据清洗与用户画像报告',
+    description: '综合应用所学技能，完成完整的数据清洗和用户画像分析',
     icon: 'file-report',
     order: 10,
     lessons: [
       {
         id: 'end2end-intro',
-        title: 'End-to-End Workflow',
-        content: 'Complete data cleaning, feature engineering, and reporting.',
+        title: '端到端数据分析流程',
+        content: '完整的数据分析流程：数据获取、清洗、整合、特征工程、建模和报告输出。',
         examples: [
           {
             id: 'ex1',
-            code: '# Data cleaning workflow\norders_clean = orders.drop_duplicates()\norders_clean = orders_clean.dropna(subset=[\"user_id\"])',
-            explanation: 'Data cleaning steps'
+            code: '# 数据清洗流程\n清洗后订单 = 原始订单.drop_duplicates()\n清洗后订单 = 清洗后订单.dropna(subset=[\"用户ID\"])',
+            explanation: '数据清洗步骤'
           }
         ],
         exercises: [
           {
             id: 'ex1',
-            question: 'First step in data analysis?',
+            question: '数据分析的第一步通常是什么？',
             type: 'multiple-choice',
-            options: ['Data acquisition', 'Data cleaning', 'Modeling', 'Visualization'],
-            answer: 'Data acquisition',
-            explanation: 'Start with getting the data'
+            options: ['数据获取', '数据清洗', '建模', '可视化'],
+            answer: '数据获取',
+            explanation: '分析从获取原始数据开始'
           }
         ]
       }
